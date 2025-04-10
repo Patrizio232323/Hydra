@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hydra - Comunità</title>
+    <style>
+        /* Reset di base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        /* Corpo della pagina con sfondo da internet */
+        body {
+            font-family: Arial, sans-serif;
+            color: #f1f1f1;
+            background-image: url('https://i.imgur.com/NdfNIiy.png'); /* Sfondo scelto */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        /* Barra di navigazione nera */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 30px;
+            background-color: #000; /* Sfondo nero */
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        /* Logo (larghezza aumentata) */
+        .logo img {
+            width: 120px; /* Aumento della dimensione del logo */
+        }
+
+        /* Contenitore per il logo e il titolo spostato a sinistra */
+        .header-content {
+            display: flex;
+            align-items: center;
+        }
+
+        /* Nome azienda spostato vicino al logo */
+        .company-name {
+            font-size: 48px; /* Aumento della dimensione */
+            font-weight: bold;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            margin-left: 20px; /* Spostato il titolo HYDRA di 2 cm a sinistra */
+        }
+
+        /* Menu di navigazione */
+        nav ul {
+            display: flex;
+            list-style-type: none;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: color 0.3s ease-in-out, transform 0.2s;
+            cursor: pointer;
+        }
+
+        nav ul li a:hover {
+            color: #ff6f61;
+            transform: scale(1.1);
+        }
+
+        /* Sezione senza divisione tra Home e Giochi */
+        .section {
+            position: relative;
+            background-color: rgba(0, 0, 0, 0.7);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-top: 100px; /* Spazio per la barra di navigazione */
+        }
+
+        .section-content {
+            z-index: 1;
+            color: #fff;
+            max-width: 1000px; /* Aumentata la larghezza */
+            padding: 60px; /* Aumentato il padding */
+            background: rgba(0, 0, 0, 0.9);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+        }
+
+        .section-title {
+            font-size: 50px; /* Aumento della dimensione del titolo */
+            font-weight: bold;
+            margin-bottom: 40px; /* Aumentata la distanza dal testo */
+        }
+
+        .section-text {
+            font-size: 26px; /* Aumento della dimensione del testo */
+            line-height: 1.8;
+        }
+
+        /* Catalogo Giochi */
+        #giochi {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 50px 0;
+        }
+
+        .game-catalog {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 80%;
+            max-width: 1200px;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+        }
+
+        .game-catalog img {
+            width: 40%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .game-description {
+            width: 55%;
+            color: #fff;
+            padding-left: 20px;
+        }
+
+        .game-catalog h3 {
+            font-size: 26px;
+            margin-bottom: 15px;
+        }
+
+        .game-catalog p {
+            font-size: 22px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #111;
+            padding: 30px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .footer-content {
+            font-size: 18px;
+        }
+
+        /* Supporto - Rimozione immagini e centratura del testo */
+        .support-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+            font-size: 22px;
+            text-align: center;
+        }
+
+        .support-info p {
+            font-size: 26px; /* Aumento della dimensione */
+        }
+
+        .support-info .support-item {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.9);
+            border-radius: 15px;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Sezione Community (modificato nome della sezione in "Community") */
+        #community {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 60px 0; /* Aumentato padding */
+            text-align: center;
+        }
+
+        .community-content {
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 60px;
+            max-width: 1000px; /* Aumentata la larghezza */
+            margin: 0 auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Centrare il titolo della community */
+        .section-title-center {
+            font-size: 50px; /* Aumento della dimensione */
+            font-weight: bold;
+            margin-bottom: 40px; /* Aumentata la distanza */
+            text-align: center; /* Centra il titolo */
+        }
+
+        /* Aumento delle dimensioni per il testo delle sezioni */
+        .section-content, .game-catalog, .support-info, .community-icons {
+            font-size: 22px; /* Aumento della dimensione */
+        }
+
+        .section-title, .game-catalog h3, .section-title-center {
+            font-size: 36px; /* Aumento della dimensione */
+        }
+
+        /* Icona Instagram dimensione e posizione */
+        .community-icons img {
+            width: 80px; /* Ripristinato la dimensione dell'immagine */
+            height: 80px;
+            margin: 20px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .community-icons img:hover {
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barra di navigazione nera -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <a href="#"><img src="https://i.imgur.com/8SUgbwa.png" alt="Logo Hydra"></a>
+            </div>
+            <div class="company-name">HYDRA</div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#giochi">Giochi</a></li>
+                <li><a href="#community">Community</a></li> <!-- Modificato "Comunità" in "Community" -->
+                <li><a href="#supporto">Supporto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Sezione Home senza divisione -->
+    <section id="home" class="section">
+        <div class="section-content">
+            <h2 class="section-title">Chi Siamo</h2>
+            <p class="section-text">Hydra è un'azienda videoludica con l'intento di imporsi nel mercato videoludico italiano. Usufriamo sempre delle tecnologie più all'avanguardia per rilasciare il nostro prodotto al massimo delle sue capacità. La nostra azienda cerca sempre di minimizzare il nostro impatto sull'ambiente adottando tecniche di produzione sostenibili.</p>
+        </div>
+    </section>
+
+    <!-- Sezione Giochi -->
+    <section id="giochi" class="section">
+        <div class="game-catalog">
+            <img src="https://imgur.com/4DusFEN.png" alt="Decode Game">
+            <div class="game-description">
+                <h3>Decode</h3>
+                <p>Decode è un FPS rompicapo ambientato in eventi storici che hanno segnato il percorso della storia, dovrai decifrare vari cifrari, come binario e il cifrario cesare, con l'obiettivo di sabotare il nemico.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sezione Community -->
+    <section id="community">
+        <div class="community-content">
+            <h2 class="section-title-center">Unisciti alla nostra community!</h2> <!-- Titolo centrato -->
+            <p class="section-text">Seguici sui nostri canali social per rimanere aggiornato su tutte le novità, eventi e giochi.</p>
+            <div class="community-icons">
+                <a href="https://www.instagram.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/1200px-Instagram_icon.png" alt="Instagram"></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sezione Supporto -->
+    <section id="supporto" class="section">
+        <div class="section-content">
+            <h2 class="section-title">Supporto</h2>
+            <div class="support-info">
+                <p>Per qualsiasi dubbio, problema o richiesta, non esitare a contattarci:</p>
+                <div class="support-item">
+                    <p>Email: supporto@hydra.com</p>
+                </div>
+                <div class="support-item">
+                    <p>Telefono: +39 123 456 789</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Hydra. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
